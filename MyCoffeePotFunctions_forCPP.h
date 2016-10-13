@@ -24,10 +24,17 @@
 // funciton stubs
 
 void My_SimulateOneSecondPassing();
-void My_DemonstrateCoffeePotAction(COFFEEPOT_DEVICE *coffeePot_BaseAddress, char char uniqueCoffeePotName[], unsigned short int waterLevelRequired, unsigned short int waterTemperatureRequired);
+void My_DemonstrateCoffeePotAction(COFFEEPOT_DEVICE *coffeePot_BaseAddress, char uniqueCoffeePotName[],
+  unsigned short int waterLevelRequired, unsigned short int waterTemperatureRequired);
 
 void MyDemonstrateCoffePotsAction(hardwareControl,
     coffeePot_BaseAddress, uniqueCoffeePotName, WATERLEVELREQUIRED, WATERTEMPERATUREREQUIRED,
     coffeePot_BaseAddress, uniqueCoffeePotName, WATERLEVELREQUIRED, WATERTEMPERATUREREQUIRED);
+
+void My_MakeCoffeePot_ReadyForAction(COFFEEPOT_DEVICE *coffeePot_BaseAddress, char uniqueCoffeePotName[]);
+
+void My_WaterControlCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress, unsigned short in waterLevelRequired);
+void My_SimulateOneSecondPassing_CPP(void);
+
 
 #endif
