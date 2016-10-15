@@ -45,7 +45,7 @@ void My_DemonstrateCoffeePotAction_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress, 
 			waterlevel = CurrentWaterLevel_CPP(coffeePot_BaseAddress);
 			if(waterlevel> (waterLevelRequired*0.9)){break;}
 		}
-		coffeePot_BaseAddress -> heaterRegister = 0;
+		coffeePot_BaseAddress -> controlRegister = 0;
 
   }
 void My_MakeCoffeePot_ReadyForAction(COFFEEPOT_DEVICE *coffeePot_BaseAddress, char uniqueCoffeePotName[] )
@@ -89,16 +89,3 @@ void My_DemonstrateCoffeePotAction_CPP(bool Hardwarecontrol ,COFFEEPOT_DEVICE *c
 
 	My_HeatControlCode_CPP(coffeePot_BaseAddress2,waterTemperatureRequired2);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
