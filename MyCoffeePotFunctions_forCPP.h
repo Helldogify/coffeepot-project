@@ -1,9 +1,7 @@
 #ifndef CoffeePot_SimulatorFunctions_h
 #define CoffeePot_SimulatorFunctions_h
 
-#ifndef _CPP_
-  #error("Youcant use this include file inside ASM code - Build an ASM version of the file");
-#endif
+#include <MockDevices2016\CoffeePot_SimulatorFunctions2016.h>
 
 // General Control(Bits 4 to 0)
 
@@ -16,10 +14,10 @@
 //LED CONTROL (Bits 15 to 12) -- W1S
 #define LED_CONTROL_OFFSET 12
 #define LED1 (1<< (1 LED_CONTROL_OFFSET +0))  // 0x1 LED -- 1
-#define LED1 (1<< (1 LED_CONTROL_OFFSET +1))
-#define LED1 (1<< (1 LED_CONTROL_OFFSET +2))
-#define LED1 (1<< (1 LED_CONTROL_OFFSET +3))
-#define LED1 (1<< (1 LED_CONTROL_OFFSET +4))
+#define LED2 (1<< (1 LED_CONTROL_OFFSET +1))
+#define LED3 (1<< (1 LED_CONTROL_OFFSET +2))
+#define LED4 (1<< (1 LED_CONTROL_OFFSET +3))
+#define LED5 (1<< (1 LED_CONTROL_OFFSET +4))
 
 // funciton stubs
 
@@ -27,9 +25,7 @@ void My_SimulateOneSecondPassing();
 void My_DemonstrateCoffeePotAction(COFFEEPOT_DEVICE *coffeePot_BaseAddress, char uniqueCoffeePotName[],
   unsigned short int waterLevelRequired, unsigned short int waterTemperatureRequired);
 
-void MyDemonstrateCoffePotsAction(hardwareControl,
-    coffeePot_BaseAddress, uniqueCoffeePotName, WATERLEVELREQUIRED, WATERTEMPERATUREREQUIRED,
-    coffeePot_BaseAddress, uniqueCoffeePotName, WATERLEVELREQUIRED, WATERTEMPERATUREREQUIRED);
+
 
 void My_MakeCoffeePot_ReadyForAction(COFFEEPOT_DEVICE *coffeePot_BaseAddress, char uniqueCoffeePotName[]);
 

@@ -1,12 +1,11 @@
 #include "MyCoffeePotFunctions.h"
-
+#include <MockDevices2016\CoffeePot_SimulatorFunctions2016.h>
 #include<stdio.h>
-#include "MockDevices2016\CoffeePot_SimulatorFunctions2016.h"
 
 #define INDIVIDUAL_ASSIGNMENT_MANUAL_UPDATE          1
 #define INDIVIDUAL_ASSIGNMENT_TIMER_INTERRUPT_UPDATE 0
 
-void My_SimulateOneSecondPassing_CPP(void)
+void My_SimulateOneSecondPassing(void)
 {
 #if INDIVIDUAL_ASSIGNMENT_MANUAL_UPDATE
   UpdateSimulationDisplay();
@@ -49,5 +48,3 @@ void My_DemonstrateCoffeePotAction(COFFEEPOT_DEVICE *coffeePot_BaseAddress, char
         My_SimulateOneSecondPassing();
       }
   }
-
-My_WaterControlCode_CPP(coffeePot_BaseAddress, waterLevelRequired);
