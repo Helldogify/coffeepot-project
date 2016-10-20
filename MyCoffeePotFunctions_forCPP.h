@@ -10,6 +10,7 @@
 #define WATERPOWER (1<<2) // 0x4 -- water control power on
 #define HEATERPOWER  (1<<3) // 0x8 -- heater power on
 #define DEVICE_READY_RO ((0x10))  // 0x10 - DEVICE is ready after initialization  -- RO
+#define CoffeeBit	(1<<11) //coffebit?
 
 //LED CONTROL (Bits 15 to 12) -- W1S
 #define LED_CONTROL_OFFSET 12
@@ -37,5 +38,6 @@ void My_MakeCoffeePot_ReadyForAction(COFFEEPOT_DEVICE *coffeePot_BaseAddress, ch
 void My_WaterControlCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress, unsigned short int waterLevelRequired);
 void My_SimulateOneSecondPassing_CPP(void);
 void My_HeatControlCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress, unsigned short int waterTemperatureRequired);
-
+void My_HeatDoubleCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress1, unsigned short int waterTemperatureRequired1,
+		COFFEEPOT_DEVICE *coffeePot_BaseAddress2, unsigned short int waterTemperatureRequired2);
 #endif

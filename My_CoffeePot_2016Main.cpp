@@ -18,9 +18,9 @@ int main(void) {
 
   int numCoffeePots = 2;
 
-  WHICHDISPLAY whichDisplay = USE_TEXT_GUI; // use this display mode at beginning
-  //WHICHDISPLAY whichDisplay= USE_CCES_GUI;
-  //WHICHDISPLAY whichDisplay= (WHICHDISPLAY) (USE_TEXT_GUI | USE_CCES_GUI);
+  //WHICHDISPLAY whichDisplay = USE_TEXT_GUI; // use this display mode at beginning
+ // WHICHDISPLAY whichDisplay= USE_CCES_GUI;
+  WHICHDISPLAY whichDisplay= (WHICHDISPLAY) (USE_TEXT_GUI | USE_CCES_GUI);
   //WHICHDISPLAY whichDisplay= (WHICHDISPLAY) (USE_TEXT_GUI | USE_SPI_GUI);
   Init_CoffeePotSimulation(numCoffeePots, whichDisplay);
 
@@ -42,7 +42,7 @@ int main(void) {
   unsigned short int waterlevelrequired1 = 310;
   unsigned short int watertemperaturerequired1 = 100;
   unsigned short int waterlevelrequired2 = 300;
-  unsigned short int watertemperaturerequired2 = 90;
+  unsigned short int watertemperaturerequired2 = 100;
 
  // My_DemonstrateCoffeePotAction_CPP(coffeePot2_BaseAddress, uniqueCoffeePotName2, waterlevelrequired2, watertemperaturerequired2);
 #endif

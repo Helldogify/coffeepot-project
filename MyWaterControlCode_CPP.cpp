@@ -8,10 +8,10 @@ void My_WaterControlCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress, unsigned s
 {
 	unsigned int waterlevel = CurrentWaterLevel_CPP(coffeePot_BaseAddress);
 
-	while(waterlevel< waterLevelRequired)
+	while(waterlevel< waterLevelRequired*0.9)
 	{
-		My_SimulateOneSecondPassing_CPP();
-		coffeePot_BaseAddress-> waterInFlowRegister = 10;
+
+		coffeePot_BaseAddress-> waterInFlowRegister = 40;
 		My_SimulateOneSecondPassing_CPP();
 		waterlevel = CurrentWaterLevel_CPP(coffeePot_BaseAddress);
 	}
