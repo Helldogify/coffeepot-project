@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <MockDevices2016\CoffeePot_SimulatorFunctions2016.h>
-#include "CoffeePot_2016Main.h"
+
+
 #include "MyCoffeePotFunctions_forCPP.h"
 
 

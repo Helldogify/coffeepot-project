@@ -40,4 +40,10 @@ void My_SimulateOneSecondPassing_CPP(void);
 void My_HeatControlCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress, unsigned short int waterTemperatureRequired);
 void My_HeatDoubleCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress1, unsigned short int waterTemperatureRequired1,
 		COFFEEPOT_DEVICE *coffeePot_BaseAddress2, unsigned short int waterTemperatureRequired2);
+
+
+extern "C" void WaterControlCode_ASM(COFFEEPOT_DEVICE *coffeePot_BaseAddress, unsigned short int waterLevelRequired);
+extern "C" void My_HeatControlCode_ASM(COFFEEPOT_DEVICE *coffeePot_BaseAddress , unsigned short int watertemperatureRequired);
+
+
 #endif
