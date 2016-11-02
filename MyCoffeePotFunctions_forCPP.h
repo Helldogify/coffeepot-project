@@ -29,7 +29,9 @@ void My_DemonstrateCoffeePotAction_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress, 
 void My_DemonstrateCoffeePotAction_CPP(bool Hardwarecontrol ,COFFEEPOT_DEVICE *coffeePot_BaseAddress1,
   char uniqueCoffeePotName1[],unsigned short int waterLevelRequired1, unsigned short int waterTemperatureRequired1,
   COFFEEPOT_DEVICE *coffeePot_BaseAddress2,char uniqueCoffeePotName2[],unsigned short int waterLevelRequired2,
-  unsigned short int waterTemperatureRequired2);
+  unsigned short int waterTemperatureRequired2,
+  COFFEEPOT_DEVICE *coffeePot_BaseAddress3,char uniqueCoffeePotName3[],unsigned short int waterLevelRequired3,
+  unsigned short int waterTemperatureRequired3);
 
 
 
@@ -43,7 +45,7 @@ void My_HeatDoubleCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress1, unsigned sh
 
 
 extern "C" void WaterControlCode_ASM(COFFEEPOT_DEVICE *coffeePot_BaseAddress, unsigned short int waterLevelRequired);
-extern "C" void My_HeatControlCode_ASM(COFFEEPOT_DEVICE *coffeePot_BaseAddress , unsigned short int watertemperatureRequired);
+extern "C" void HeaterControlCode_ASM(COFFEEPOT_DEVICE *coffeePot_BaseAddress , unsigned short int watertemperatureRequired);
 
 
 #endif

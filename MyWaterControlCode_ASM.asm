@@ -24,6 +24,7 @@ R4 = R0;
 R5 =R1;
 LINK 20;
 
+
 	.extern __Z21CurrentWaterLevel_CPPP16COFFEEPOT_DEVICE;
 	CALL __Z21CurrentWaterLevel_CPPP16COFFEEPOT_DEVICE;
 
@@ -33,11 +34,14 @@ WHILE_WCC:
 CC = R1 <= R5;
 
 If !CC JUMP END_WHILE_CC;
-P0 = P4;
- temp_R2 = 200; 
+P0 = R4;
+R2 = 20; 
        B[P0 + 0x7] = R2;
+       
        .extern __Z31My_SimulateOneSecondPassing_CPPv;
        CALL __Z31My_SimulateOneSecondPassing_CPPv; 
+       
+       R0 = R4;
        .extern __Z21CurrentWaterLevel_CPPP16COFFEEPOT_DEVICE; 
        CALL __Z21CurrentWaterLevel_CPPP16COFFEEPOT_DEVICE; 
        R1 = R0; 
