@@ -1,10 +1,10 @@
 #ifndef CoffeePot_SimulatorFunctions_h
 #define CoffeePot_SimulatorFunctions_h
-
+#include <GPIO2016/ADSP_GPIO_Interface.h>
 #include <MockDevices2016\CoffeePot_SimulatorFunctions2016.h>
 
 // General Control(Bits 4 to 0)
-
+#define  WAIT_TIME  0xa28242
 #define INITandSTAYPOWERED (1<<0) // 0x1 -- cause device to initialize (2  seconds ) and stay powerd up
 #define LEDPOWER (1<<1) // 0x2 -- LED Power on
 #define WATERPOWER (1<<2) // 0x4 -- water control power on
@@ -38,7 +38,7 @@ void My_DemonstrateCoffeePotAction_CPP(bool Hardwarecontrol ,COFFEEPOT_DEVICE *c
 void My_MakeCoffeePot_ReadyForAction(COFFEEPOT_DEVICE *coffeePot_BaseAddress, char uniqueCoffeePotName[]);
 
 void My_WaterControlCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress, unsigned short int waterLevelRequired);
-void My_SimulateOneSecondPassing_CPP(void);
+void My_SimulateOneSecondPassing_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress);
 void My_HeatControlCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress, unsigned short int waterTemperatureRequired);
 void My_HeatDoubleCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress1, unsigned short int waterTemperatureRequired1,
 		COFFEEPOT_DEVICE *coffeePot_BaseAddress2, unsigned short int waterTemperatureRequired2);
@@ -46,6 +46,18 @@ void My_HeatDoubleCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress1, unsigned sh
 
 extern "C" void WaterControlCode_ASM(COFFEEPOT_DEVICE *coffeePot_BaseAddress, unsigned short int waterLevelRequired);
 extern "C" void HeaterControlCode_ASM(COFFEEPOT_DEVICE *coffeePot_BaseAddress , unsigned short int watertemperatureRequired);
+
+//ISR shit
+void INIT_CoreTimer(void);
+
+void Wait_Time_USeconds(unsigned long int delayMicroSeconds);
+void SET_CoreTimer();
+void SET_IMASK();
+void CoreTimerISRCPP(void);
+void SET_EVT_Table(void);
+
+
+
 
 
 #endif

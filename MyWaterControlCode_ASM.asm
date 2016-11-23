@@ -1,39 +1,50 @@
 #include <blackfin.h>
 .section data1;
+.var _dummy = 0x0000;
 .var _waterlevel = 0x0000;
+
+
+//#define INPAR1_R0 R0
+//#define INPAR2_R1 R1
+#define INPAR1_R4 R4
+#define INPAR2_R5 R5
+#define returnValue_R0 R0
+#define baseAddress_P0 P0
+#define waterlevel_R1 R1
+#define temp_R2 R2
 
 
 .section program;
 	.global _WaterControlCode_ASM;
 	
 _WaterControlCode_ASM: //
-[--SP] = R4;
-R4 = R0;  // pointer to coffeepot base address saved in R4
+[--SP] = R4; // pointer to coffeepot base address
+R4 = R0;
 [--SP] = R5;
-R5 =R1; //waterlevel needed stored in R5
+R5 =R1;
 LINK 20;
 
 
 	.extern __Z21CurrentWaterLevel_CPPP16COFFEEPOT_DEVICE;
 	CALL __Z21CurrentWaterLevel_CPPP16COFFEEPOT_DEVICE;
 
-	R1 =R0; // R1 = current water level
+	R1 =R0;
 WHILE_WCC:
 
-CC = R1 <= R5; // Check if waterlevel is at the required amount 
+CC = R1 <= R5;
 
-If !CC JUMP END_WHILE_CC; // if it is stop adding water
-P0 = R4; //P0 = coffeepot baseregister
-R2 = 20; // amount of water to be added per second (determined through experiments)
-       B[P0 + 0x7] = R2; // water inflow register = 20
+If !CC JUMP END_WHILE_CC;
+P0 = R4;
+R2 = 20; 
+       B[P0 + 0x7] = R2;
+       R0 = P0;
+       .extern __Z31My_SimulateOneSecondPassing_CPPP16COFFEEPOT_DEVICE;
+       CALL __Z31My_SimulateOneSecondPassing_CPPP16COFFEEPOT_DEVICE; 
        
-       .extern __Z31My_SimulateOneSecondPassing_CPPv;
-       CALL __Z31My_SimulateOneSecondPassing_CPPv; //wait a 1 second
-       
-       R0 = R4; // put base register value in current water level function argument
+       R0 = R4;
        .extern __Z21CurrentWaterLevel_CPPP16COFFEEPOT_DEVICE; 
        CALL __Z21CurrentWaterLevel_CPPP16COFFEEPOT_DEVICE; 
-       R1 = R0; // update current water level
+       R1 = R0; 
        JUMP WHILE_WCC;
 END_WHILE_CC:
 _WaterControlCode_ASM.END:

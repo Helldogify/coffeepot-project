@@ -13,7 +13,7 @@ void My_WaterControlCode_CPP(COFFEEPOT_DEVICE *coffeePot_BaseAddress, unsigned s
 	{
 
 		coffeePot_BaseAddress-> waterInFlowRegister = 40;
-		My_SimulateOneSecondPassing_CPP();
+		My_SimulateOneSecondPassing_CPP(coffeePot_BaseAddress);
 		waterlevel = CurrentWaterLevel_CPP(coffeePot_BaseAddress);
 	}
 
