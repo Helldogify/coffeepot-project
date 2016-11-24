@@ -14,11 +14,11 @@ if (coffeePot_BaseAddress == 0)
 else
 {
 	unsigned char current = Read_LED_GPIOInterface();
-	if(coffeePot_BaseAddress->waterInFlowRegister != 0) {Write_LED_GPIOInterface(Read_LED_GPIOInterface() | 0x10);}
+	if(((Read_Input_GPIOInterface()>>8) & 0x01) == 0x01) {Write_LED_GPIOInterface(Read_LED_GPIOInterface() | 0x10);}
 	else {Write_LED_GPIOInterface(Read_LED_GPIOInterface() & ~(0x10));}
-	if(coffeePot_BaseAddress->heaterRegister != 0) {Write_LED_GPIOInterface(Read_LED_GPIOInterface() | (0x20));}
+	if(((((Read_Input_GPIOInterface()>>8)>>1) & 0x01) == 0x01)) {Write_LED_GPIOInterface(Read_LED_GPIOInterface() | (0x20));}
 	else {Write_LED_GPIOInterface(Read_LED_GPIOInterface() & ~(0x20));}
-	if((CurrentTemperature_CPP(coffeePot_BaseAddress) <= 100)&&(CurrentTemperature_CPP(coffeePot_BaseAddress) >= 80)&&(CurrentWaterLevel_CPP(coffeePot_BaseAddress) >= 80)) {Write_LED_GPIOInterface(Read_LED_GPIOInterface() | 0x08);}
+	if((CurrentTemperature_CPP(coffeePot_BaseAddress) <= 100)&&(CurrentTemperature_CPP(coffeePot_BaseAddress) >= 80)&&(CurrentWaterLevel_CPP(coffeePot_BaseAddress) >= 280)&&(CurrentWaterLevel_CPP(coffeePot_BaseAddress) <= 330)) {Write_LED_GPIOInterface(Read_LED_GPIOInterface() | 0x08);}
 	else{Write_LED_GPIOInterface(Read_LED_GPIOInterface() & ~(0x08));}
 //	UpdateSimulationDisplay();
 }
